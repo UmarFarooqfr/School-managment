@@ -1,0 +1,39 @@
+<form [formGroup]="userLoginFrom">
+    <div class="main-container">
+
+        <div class="inner-container">
+            <div class="inputs">
+                <span style="margin-bottom: -20px;">User Name :</span>
+                <input type="text" formControlName="userName">
+                <div style="color: red; margin-top: -22px;"
+                    *ngIf="userLoginFrom?.get('userName')?.hasError('minlength') && userLoginFrom?.get('userName')?.touched">
+                    Username must be at least 4 characters long.
+                </div>
+                <div style="color: red;margin-top: -22px;"
+                    *ngIf="userLoginFrom.get('userName')?.hasError('required') && userLoginFrom?.get('userName')?.touched">
+                    Username is required.
+                </div>
+
+
+                <span style="margin-bottom: -20px;">Password :</span>
+
+                <input type="password" formControlName="password">
+                <div style="margin-top: -22px;color: red;"
+                    *ngIf="userLoginFrom?.get('password')?.hasError('required') && userLoginFrom?.get('password')?.touched">
+                    Password is required.
+                </div>
+
+            </div>
+            <div class="accountCreation">
+                <span>Create An Aaccount ? <i [routerLink]="['/register']"
+                        style="color: #004a9f;cursor: pointer;text-decoration: underline;">Sign in</i></span>
+
+            </div>
+            <div class="button">
+                <button type="submit" (click)="logIn()" [disabled]="userLoginFrom.invalid">Log In</button>
+
+            </div>
+        </div>
+
+    </div>
+</form>

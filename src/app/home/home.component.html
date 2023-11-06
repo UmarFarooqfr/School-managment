@@ -1,0 +1,24 @@
+<table>
+  <tr style="height: 80px;">
+    <th style="border-top-left-radius: 10px;">Student Name</th>
+    <th>DOB</th>
+    <th>Cnic</th>
+    <th>Guardian Name</th>
+    <th>Emergency Contact</th>
+    <th>Pev Result %</th>
+    <th>Refer By</th>
+    <th style="border-top-right-radius: 10px;">Action</th>
+  </tr>
+  <tr *ngFor="let student of allStudents" style="height: 60px;">
+    <td>{{student.studentName}}</td>
+    <td>{{student.DOB}}</td>
+    <td>{{student.CNIC}}</td>
+    <td>{{student.guardianName}}</td>
+    <td>{{student.emrgencyContct}}</td>
+    <td>{{student.preResultEducation}}</td>
+    <td>{{student.referBy ? student.referBy : 'None'}}</td>
+    <td><button type="button" (click)="editStudent(student._id)">Edit</button><button type="button" style="background-color: red;border: 2px solid red;"
+        (click)="DeleteStudent(student._id)">Delete</button></td>
+  </tr>
+
+</table>

@@ -1,0 +1,101 @@
+<form [formGroup]="studentsForm" style="height: 90%;">
+    <div class="main-container">
+        <div class="inner-container">
+            <div class="colums">
+                <div>
+
+                    <span>Student Name:</span>
+                    <input type="text" formControlName="studentName">
+                    <div style="color: red;width: 90%;height: 10%;"
+                        *ngIf="studentsForm.get('studentName')?.hasError('required') && studentsForm?.get('studentName')?.touched">
+                        StudentName is required.
+                    </div>
+                </div>
+                <div>
+
+                    <span> Date of Birth:</span>
+                    <input type="date" formControlName="DOB">
+                    <div style="color: red;width: 90%;height: 10%;"
+                        *ngIf="studentsForm.get('DOB')?.hasError('required') && studentsForm?.get('DOB')?.touched">
+                        DOB is required.
+                    </div>
+                </div>
+                <div>
+
+                    <span>Student Cnic/B-form</span>
+                    <input type="text" formControlName="CNIC">
+                    <div style="color: red;width: 90%;height: 10%;"
+                        *ngIf="studentsForm.get('CNIC')?.hasError('required') && studentsForm?.get('CNIC')?.touched">
+                        Cnic/B-form is required.
+                    </div>
+                    <div *ngIf="studentsForm.get('CNIC')?.hasError('invalidCNIC')"
+                        style="color: red;width: 90%;height: 10%;">
+                        CNIC must be 13 characters long and start with '3'.
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="colums" style="margin-top: 60px;">
+                <div>
+
+                    <span> Student Father/Guardian's Name:</span>
+                    <input type="text" formControlName="guardianName">
+                    <div style="color: red;width: 90%;height: 10%;"
+                        *ngIf="studentsForm.get('guardianName')?.hasError('required') && studentsForm?.get('guardianName')?.touched">
+                        Guardian Name is required.
+                    </div>
+                </div>
+                <div>
+
+                    <span>Address: </span>
+                    <input type="text" formControlName="address">
+                    <div style="color: red;width: 90%;height: 10%;"
+                        *ngIf="studentsForm.get('address')?.hasError('required') && studentsForm?.get('address')?.touched">
+                        Address is required.
+                    </div>
+                </div>
+                <div>
+
+                    <span>Emergency Contact:</span>
+                    <input type="number" formControlName="emrgencyContct">
+                    <div style="color: red;width: 90%;height: 10%;"
+                        *ngIf="studentsForm.get('emrgencyContct')?.hasError('required') && studentsForm?.get('emrgencyContct')?.touched">
+                        Emergency Contact no. is required.
+                    </div>
+                </div>
+            </div>
+            <div class="colums" style="margin-top: 60px;">
+                <div>
+
+                    <span>Previous Education:</span>
+                    <input type="text" formControlName="previousEducation">
+                    <div style="color: red;width: 90%;height: 10%;"
+                        *ngIf="studentsForm.get('previousEducation')?.hasError('required') && studentsForm?.get('previousEducation')?.touched">
+                        Previous Education is required.
+                    </div>
+                </div>
+                <div>
+
+                    <span>Prevoius Result Percentage:</span>
+                    <input type="number" formControlName="preResultEducation">
+                    <div style="color: red;width: 90%;height: 10%;"
+                        *ngIf="studentsForm.get('preResultEducation')?.hasError('required') && studentsForm?.get('preResultEducation')?.touched">
+                        Previous Result Percentage is required.
+                    </div>
+
+                </div>
+                <div>
+                    <span>Refer by Teacher/Student (Optional): </span>
+                    <input type="text">
+
+                </div>
+            </div>
+            <div class="colums" style="margin-top: 60px;display: flex;justify-content: center;">
+                <button type="button" (click)="addStudent()" [disabled]="studentsForm.invalid">Submit Info</button>
+            </div>
+
+        </div>
+
+    </div>
+</form>

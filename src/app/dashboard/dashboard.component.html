@@ -1,0 +1,86 @@
+<mat-toolbar class="mat-elevation-z8">
+    <div style="display: flex;align-items: center;">
+
+
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+            <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+        </button>
+
+        <span style="font-family:Verdana, Geneva, Tahoma, sans-serif">School Dashboard </span>
+    </div>
+    <div style="display: flex;height: 90%;align-items: center;">
+        <div [matMenuTriggerFor]="menu"
+            style="background-color: #004a9f;height: 70%;width: 70%;border-radius: 50%;margin-right: 10px;min-width: 35px;min-height: 20px;display: flex;align-items: center;justify-content: center;cursor: pointer;">
+
+            <span>{{userFirstName| uppercase}}</span>
+        </div>
+        <span>{{userInfo.userName}}</span>
+    </div>
+    <mat-menu #menu="matMenu" class="user-menu" style="width: 250px;">
+        <button mat-menu-item style="width: 250px;color: #004a9f;">
+            <mat-icon style="color: #004a9f;">person</mat-icon>
+            <span>{{userInfo.userName}}</span>
+        </button>
+        <button mat-menu-item style="width: 250px;color: #004a9f;">
+            <mat-icon style="color: #004a9f;">email</mat-icon>
+            <span>{{userInfo.email}}</span>
+        </button>
+        <button mat-menu-item style="width: 250px;color: #004a9f;" routerLink="/login" (click)="logOut()">
+            <mat-icon style="color: #004a9f;">exit_to_app</mat-icon>
+            <span>Log out</span>
+        </button>
+
+
+    </mat-menu>
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8" [mode]="sidenavMode">
+        <img class="avatar mat-elevation-z8" src="../../assets/umar.pic.jpg" />
+
+        <h4 class="name">Umar Farooq</h4>
+        <!-- <p class="designation"
+            style="font-family:Verdana, Geneva, Tahoma, sans-serif;font-weight: 700;font-size: 15px;"> Director School
+        </p> -->
+
+        <mat-divider></mat-divider>
+
+        <button mat-button class="menu-button" routerLink="/dashboard/home" routerLinkActive="active-link">
+            <mat-icon>person</mat-icon>
+            <span>Students</span>
+        </button>
+        <button mat-button class="menu-button" routerLink="/dashboard/newstudents" routerLinkActive="active-link">
+            <mat-icon>add_circle</mat-icon>
+            <span>Add Students </span>
+        </button>
+        <button mat-button class="menu-button" routerLink="/dashboard/teachers" routerLinkActive="active-link">
+            <mat-icon>group</mat-icon>
+            <span>Teachers</span>
+        </button>
+        <button mat-button class="menu-button" routerLink="/dashboard/activities" routerLinkActive="active-link">
+            <mat-icon>games</mat-icon>
+            <span>Activities</span>
+        </button>
+        <button mat-button class="menu-button" routerLink="/dashboard/about-us" routerLinkActive="active-link">
+            <mat-icon>info</mat-icon>
+            <span>About us</span>
+        </button>
+
+        <mat-divider></mat-divider>
+
+        <button mat-button class="menu-button" routerLink="/dashboard/help" routerLinkActive="active-link">
+            <mat-icon>help</mat-icon>
+            <span>Help</span>
+        </button>
+        <button mat-button class="menu-button" routerLink="/login" (click)="logOut()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Log out</span>
+        </button>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content mat-elevation-z8">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

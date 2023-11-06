@@ -1,0 +1,36 @@
+<form [formGroup]="teacherForm">
+    <div class="main-container">
+        <div class="inner-container" formArrayName="teachers">
+            <div class="two-inputs" style="justify-content: end;">
+                <button style="height: 50%;width: 10%;" type="button" (click)="addTeacherField()">Add Teacher</button>
+              </div>
+            <div *ngFor="let teacher of teacherControls.controls; let i = index" [formGroupName]="i" class="inputs">
+                  
+                  <div class="two-inputs"  style="margin-top: 40px;">
+                    <input type="text" id="name" formControlName="name" placeholder="Enter Teacher Name">
+                    <input type="text" id="subject" formControlName="subject" placeholder="Enter Teacher Subject">
+                    <input type="text" id="class" formControlName="class" placeholder="Enter Teacher Class">
+
+                  </div>
+                  <div class="two-inputs" style="margin-top: 40px;">
+                    <input type="text" id="qualification" formControlName="qualification" placeholder="Enter Teacher Qualification">
+                    <input type="text" id="experience" formControlName="experience" placeholder="Enter Teacher Experience">
+                    <input type="text" id="expectedSalary" formControlName="expectedSalary" placeholder="Enter Teacher Phone Number">
+
+                  </div>
+                  <div class="two-inputs" style="justify-content: center;flex-direction: column;height: 30%;">
+                   <div style="display: flex;justify-content: center;width: 100%;height: 100%;">
+                    <button type="button" (click)="removeTeacherField(i)">Remove Teacher</button>
+                    <button type="submit" style="margin-left: 20px;" (click)="addNewTeacher()" >Submit</button>
+                   </div>
+                    
+                  </div>
+                 
+                
+              </div>
+        </div>
+    </div>
+   
+    
+  </form>
+  

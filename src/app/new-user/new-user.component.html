@@ -1,0 +1,50 @@
+<form [formGroup]="registerUser">
+    <div class="main-container">
+        <div class="inner-container">
+            <div class="inputs">
+                <span>User Name:</span>
+                <input type="text" formControlName="userName">
+                <div style="color: red;height: 3%;"
+                    *ngIf="registerUser.get('userName')?.hasError('required') && registerUser?.get('userName')?.touched">
+                    Username is required.
+                </div>
+                <div style="color: red;height: 3%; "
+                    *ngIf="registerUser?.get('userName')?.hasError('minlength') && registerUser?.get('userName')?.touched">
+                    Username must be at least 4 characters long.
+                </div>
+                <span style="margin-top: 10px;">Email:</span>
+                <input type="text" formControlName="email">
+                <div style="color: red;height: 3%;"
+                    *ngIf="registerUser.get('email')?.hasError('required') && registerUser?.get('email')?.touched">
+                    Email is required.
+                </div>
+                <div style="color: red;height: 3%;"
+                    *ngIf="registerUser.get('email')?.hasError('email') && registerUser.get('email')?.touched">
+                    Invalid email format.
+                </div>
+                <span style="margin-top: 10px;">Password:</span>
+
+                <input type="text" formControlName="password">
+                <div style="color: red;height: 3%;"
+                    *ngIf="registerUser.get('password')?.hasError('required') && registerUser?.get('password')?.touched">
+                    Password is required.
+                </div>
+                <div style="color: red;height: 3%;"
+                    *ngIf="registerUser.get('password')?.hasError('invalidPassword') && registerUser?.get('password')?.touched && !registerUser.get('password')?.hasError('required') ">
+                    Password must contain at least one capital letter, one special character, and one number.
+                </div>
+                <!-- </div> -->
+            </div>
+            <div class="accountCreation">
+                Already Have an Account ? &nbsp;<i [routerLink]="['/login']"
+                    style="color: #004a9f;cursor: pointer;text-decoration: underline;">Log In</i>
+
+            </div>
+            <div class="button">
+                <button type="submit" [disabled]="registerUser.invalid" (click)="registerNewUser()">Register
+                    User</button>
+
+            </div>
+        </div>
+    </div>
+</form>
